@@ -17,9 +17,10 @@ public class Fila {
 	public Pessoa proximoFila(){
 		Pessoa proximo = null;
 		
-		proximo = verificaGravida();
+		//proximo = verificaGravida();
+		proximo = verificaIdoso();
 		
-		if(proximo == null)
+		if((proximo == null) && (!pessoas.isEmpty()))
 			proximo = pessoas.get(0);
 		
 		return proximo;
@@ -37,13 +38,13 @@ public class Fila {
 	}
 	
 	public Pessoa verificaIdoso(){
-		
-		for(Pessoa p: pessoas)
-		{
-			if(p.isIdoso())
+	
+		for(Pessoa p: pessoas){
+			if(p.isIdoso()){
 				return p;
+			}
 		}
 		
-		return null;
+		return verificaGravida();	
 	}
 }
